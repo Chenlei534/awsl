@@ -51,6 +51,23 @@ URL：统一资源定位符。URL是URI的一种，目前的网址就是使用UR
 ---
 ## HTTP
 
+### 什么是HTTP      
+
+HTTP协议通过`请求`和`响应`的方式来实现客户端和服务端通信。请求访问文本或图像等资源的一端称为`客户端`，而提供资源响应的一端称为`服务端`。
+
+#### 要点
+1. HTTP是无状态协议
+
+2. HTTP通过URI定位资源
+
+3. 主要方法
+
+4. 
+
+5. Cookie
+
+
+
 ### HTTP通信过程简述
 
 1. 客户端想要向某个网址发送请求（如：http://www.baidu.com）--> DNS将网址解析为对应的IP地址返回给客户端（如：http://127.0.0.1）
@@ -59,13 +76,11 @@ URL：统一资源定位符。URL是URI的一种，目前的网址就是使用UR
 
 ![HTTP](/images/http_1.png)     
 
-待续。。。
+### HTTP报文
 
-http状态码
+### HTTP状态码
 
-http首部
+### 什么是HTTPS
 
-什么是https
-
-http缺点和websocket
+### HTTP现状和websocket
 
