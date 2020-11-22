@@ -5,7 +5,7 @@
 ## 生命周期     
 经典的生命周期图        
 
-![activity_lifecycle.png](https://upload-images.jianshu.io/upload_images/6140848-0d35ef8355cf290c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)       
+![activity_lifecycle.png](/images/activity.png)       
 
 关于各个周期：      
 
@@ -86,7 +86,7 @@
 
 ## 生命周期
 
-![service_lifecycle.png](https://upload-images.jianshu.io/upload_images/6140848-353aa2f8717dc73d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)        
+![service_lifecycle.png](/images/serve.png)               
 
 由上图可知`Service`有两种生命周期，分别对应着`Service`的两种形式        
 
