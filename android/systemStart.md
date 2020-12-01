@@ -27,5 +27,35 @@
 
 ------------
 
-## 应用程序启动
+## 应用程序进程启动
 
+### 基本概念
+
+1. **ActivityManagerService**
+    * 简称AMS，负责Activity、Service等创建、广播的接收和发送、Activity栈的维护、跨进程通信等工作
+2. **ZygoteState**
+    * ZygoteState是Zygote的静态内部类，用于表示与Zygote进程通信的状态。
+3. **ZygoteProcess**
+    * 用于保持与Zygote进程的通信状态
+
+
+### 启动过程
+
+AMS在启动应用程序的时候会检查该应用程序所需的`应用程序进程`是否存在，如果不存在则请求Zygote进程启动应用程序进程。     
+应用程序进程的启动分为两个部分：        
+
+1. **AMS发送应用程序启动请求到Zygote进程**
+    1. 创建应用程序进程的用户ID（uid）
+    2. 对用户组ID（gisd）经行赋值
+    3. 将应用进程启动参数保存到列表（argsForZygote，便于数据传输）
+    4. 与Zygote建立Socket连接（返回ZygoteState）
+    5. 将应用进程启动参数通过Socket发送到Zygote（发送到ZygoteState）
+
+![PROCESS_START](/images/processStart1.png)
+
+2. **Zygote进程fork启动应用程序进程**
+    1. Zygote创建服务端Socket并等待AMS请求（通过ZygoteServer创建）
+    2. Zygote接收到AMS请求并处理请求数据（ZygoteServer接收AMS请求运行ZygoteConnection的runOnce()处理请求数据）
+    3. 创建应用程序进程（通过应用进程启动参数并且fork当前进程来创建子进程）
+    4. 创建Binder线程池（Binder线程池创建时会将当前线程注册到Binder驱动中）
+    5. 启动ActivityThread（通过反射调用ActivityThread.main()方法启动该类）
